@@ -72,7 +72,7 @@ int LinkedList_insertBefore(Node** linkedList, void* data, int index) {
     return err;
 }
 
-void LinkedList_toString(Node* linkedList) {
+void LinkedList_print(Node* linkedList) {
     Node* current = linkedList;
     int index = 0;
     while (current->next != NULL) {
@@ -100,4 +100,33 @@ void LinkedList_free(Node** linkedList) {
 
     free(current);
     *linkedList = NULL;
+}
+
+
+int LinkedList_deleteAt(Node** linkedList, void** resultData, int index) {
+    int err = 0;
+
+    Node* nodeToDelete;
+
+    if (index == 0) {
+        Node* nodeToDelete;
+        nodeToDelete = *linkedList;
+        Node* newHead = nodeToDelete->next;
+        *resultData = nodeToDelete->data;
+        *linkedList = newHead;
+
+    } else {
+        Node* nodeBefore;
+        if ((err = LinkedList_findNode(*linkedList, &nodeBefore, index - 1)))
+            return err;
+        nodeToDelete = nodeBefore->next;
+        Node* nodeAfter = nodeToDelete->next;
+        nodeBefore->next = nodeAfter;
+    }
+
+    nodeToDelete->next = NULL;
+    *resultData = nodeToDelete->data;
+    free(nodeToDelete);
+
+    return 0;
 }

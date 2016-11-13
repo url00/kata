@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include "LinkedList.h"
 
@@ -25,15 +26,24 @@ int main(void) {
     if ((err = LinkedList_addToStart(&ll, fifty)))
         return err;
 
-    LinkedList_toString(ll);
+    LinkedList_print(ll);
 
 
     int* wowza = (int*)malloc(sizeof(int));
     *wowza = 1337;
     if ((err = LinkedList_insertBefore(&ll, wowza, 1)))
         return err;
+    LinkedList_print(ll);
 
-    LinkedList_toString(ll);
+
+    void* pointerToDeletedData;
+    if ((err = LinkedList_deleteAt(&ll, &pointerToDeletedData, 1)))
+        return err;
+    int* deletedData = (int*)malloc(sizeof(int));
+    deletedData = (int*)pointerToDeletedData;
+    printf("--> %d\n", *deletedData);
+    free(deletedData);
+    LinkedList_print(ll);
 
 
     LinkedList_free(&ll);

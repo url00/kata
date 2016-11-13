@@ -10,7 +10,8 @@ typedef struct Node {
 int LinkedList_init(Node** linkedList);
 int LinkedList_addToStart(Node** linkedList, void* data);
 int LinkedList_insertBefore(Node** linkedList, void* data, int index);
-void LinkedList_toString(Node* linkedList);
+int LinkedList_deleteAt(Node** linkedList, void** resultData, int index);
+void LinkedList_print(Node* linkedList);
 void LinkedList_free(Node** linkedList);
 
 #endif /* LINKEDLIST_H_ */
