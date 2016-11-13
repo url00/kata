@@ -13,7 +13,6 @@ int initializeLinkedList(Node** linkedList) {
     *linkedList = (Node*)malloc(sizeof(Node));
     if (*linkedList == NULL) {
         free(*linkedList);
-        *linkedList = NULL;
         return 1;
     }
 
@@ -27,14 +26,12 @@ int addToStart(Node** linkedList, int data) {
     Node* newNode = (Node*)malloc(sizeof(Node));
     if (newNode == NULL) {
         free(newNode);
-        newNode = NULL;
         return 1;
     }
 
     int* pointerToData = (int*)malloc(sizeof(int));
     if (pointerToData == NULL) {
         free(pointerToData);
-        pointerToData = NULL;
         return 1;
     }
     *pointerToData = data;
@@ -59,6 +56,21 @@ void printLinkedList(Node* linkedList) {
     }
 }
 
+void freeLinkedList(Node** linkedList) {
+    Node* current = *linkedList;
+    while (current->next != NULL) {
+        free(current->data);
+        current->data = NULL;
+
+        Node* oldCurrent = current;
+        current = current->next;
+        free(oldCurrent);
+    }
+
+    free(current);
+    *linkedList = NULL;
+}
+
 int main(void) {
     int err = 0;
 
@@ -77,6 +89,8 @@ int main(void) {
     if (err) return err;
 
     printLinkedList(ll);
+
+    freeLinkedList(&ll);
 
     return 0;
 }
