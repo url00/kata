@@ -1,96 +1,41 @@
-#include <stdio.h>
 #include <stdlib.h>
-
-
-
-typedef struct Node {
-    // Needs to be struct Node* because the typedef hasn't happened yet.
-    struct Node* next;
-    void* data;
-} Node;
-
-int initializeLinkedList(Node** linkedList) {
-    *linkedList = (Node*)malloc(sizeof(Node));
-    if (*linkedList == NULL) {
-        free(*linkedList);
-        return 1;
-    }
-
-    (*linkedList)->next = NULL;
-    (*linkedList)->data = NULL;
-
-    return 0;
-}
-
-int addToStart(Node** linkedList, int data) {
-    Node* newNode = (Node*)malloc(sizeof(Node));
-    if (newNode == NULL) {
-        free(newNode);
-        return 1;
-    }
-
-    int* pointerToData = (int*)malloc(sizeof(int));
-    if (pointerToData == NULL) {
-        free(pointerToData);
-        return 1;
-    }
-    *pointerToData = data;
-    newNode->data = pointerToData;
-
-    Node* oldHead = *linkedList;
-    newNode->next = oldHead;
-    *linkedList = newNode;
-
-    return 0;
-}
-
-void printLinkedList(Node* linkedList) {
-    Node* current = linkedList;
-    while (current->next != NULL) {
-        int* dataPointer = (int*)current->data;
-        int data = *dataPointer;
-
-        printf("%d ", data);
-
-        current = current->next;
-    }
-}
-
-void freeLinkedList(Node** linkedList) {
-    Node* current = *linkedList;
-    while (current->next != NULL) {
-        free(current->data);
-        current->data = NULL;
-
-        Node* oldCurrent = current;
-        current = current->next;
-        free(oldCurrent);
-    }
-
-    free(current);
-    *linkedList = NULL;
-}
+#include "LinkedList.h"
 
 int main(void) {
     int err = 0;
 
     Node* ll;
 
-    err = initializeLinkedList(&ll);
+    err = LinkedList_init(&ll);
     if (err) return err;
 
-    err = addToStart(&ll, 200);
-    if (err) return err;
 
-    err = addToStart(&ll, -50);
-    if (err) return err;
+    int* two = (int*)malloc(sizeof(int));
+    *two = 2;
+    if ((err = LinkedList_addToStart(&ll, two)))
+        return err;
 
-    err = addToStart(&ll, 300);
-    if (err) return err;
+    int* negFive = (int*)malloc(sizeof(int));
+    *negFive = -5;
+    if ((err = LinkedList_addToStart(&ll, negFive)))
+        return err;
 
-    printLinkedList(ll);
+    int* fifty = (int*)malloc(sizeof(int));
+    *fifty = 50;
+    if ((err = LinkedList_addToStart(&ll, fifty)))
+        return err;
 
-    freeLinkedList(&ll);
+    LinkedList_toString(ll);
 
+
+    int* wowza = (int*)malloc(sizeof(int));
+    *wowza = 1337;
+    if ((err = LinkedList_insertBefore(&ll, wowza, 1)))
+        return err;
+
+    LinkedList_toString(ll);
+
+
+    LinkedList_free(&ll);
     return 0;
 }
