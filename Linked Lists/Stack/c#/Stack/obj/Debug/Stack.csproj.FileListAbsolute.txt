@@ -1,6 +1,0 @@
-C:\Users\n.bergeron\Desktop\Workspace\pie\Linked Lists\Stack\c#\Stack\bin\Debug\Stack.exe.config
-C:\Users\n.bergeron\Desktop\Workspace\pie\Linked Lists\Stack\c#\Stack\bin\Debug\Stack.exe
-C:\Users\n.bergeron\Desktop\Workspace\pie\Linked Lists\Stack\c#\Stack\bin\Debug\Stack.pdb
-C:\Users\n.bergeron\Desktop\Workspace\pie\Linked Lists\Stack\c#\Stack\obj\Debug\Stack.csprojResolveAssemblyReference.cache
-C:\Users\n.bergeron\Desktop\Workspace\pie\Linked Lists\Stack\c#\Stack\obj\Debug\Stack.exe
-C:\Users\n.bergeron\Desktop\Workspace\pie\Linked Lists\Stack\c#\Stack\obj\Debug\Stack.pdb

@@ -1,0 +1,6 @@
+C:\Users\n.bergeron\Desktop\Workspace\pie\Linked Lists\Stack\csharp\bin\Debug\csharp.exe.config
+C:\Users\n.bergeron\Desktop\Workspace\pie\Linked Lists\Stack\csharp\bin\Debug\csharp.exe
+C:\Users\n.bergeron\Desktop\Workspace\pie\Linked Lists\Stack\csharp\bin\Debug\csharp.pdb
+C:\Users\n.bergeron\Desktop\Workspace\pie\Linked Lists\Stack\csharp\obj\Debug\csharp.csprojResolveAssemblyReference.cache
+C:\Users\n.bergeron\Desktop\Workspace\pie\Linked Lists\Stack\csharp\obj\Debug\csharp.exe
+C:\Users\n.bergeron\Desktop\Workspace\pie\Linked Lists\Stack\csharp\obj\Debug\csharp.pdb
