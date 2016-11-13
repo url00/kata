@@ -109,10 +109,8 @@ int LinkedList_deleteAt(Node** linkedList, void** resultData, int index) {
     Node* nodeToDelete;
 
     if (index == 0) {
-        Node* nodeToDelete;
         nodeToDelete = *linkedList;
         Node* newHead = nodeToDelete->next;
-        *resultData = nodeToDelete->data;
         *linkedList = newHead;
 
     } else {

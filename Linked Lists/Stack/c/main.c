@@ -21,11 +21,6 @@ int main(void) {
     if ((err = LinkedList_addToStart(&ll, negFive)))
         return err;
 
-    int* fifty = (int*)malloc(sizeof(int));
-    *fifty = 50;
-    if ((err = LinkedList_addToStart(&ll, fifty)))
-        return err;
-
     LinkedList_print(ll);
 
 
@@ -36,13 +31,23 @@ int main(void) {
     LinkedList_print(ll);
 
 
-    void* pointerToDeletedData;
+    void* pointerToDeletedData = NULL;
+    int* deletedData = NULL;
     if ((err = LinkedList_deleteAt(&ll, &pointerToDeletedData, 1)))
         return err;
-    int* deletedData = (int*)malloc(sizeof(int));
     deletedData = (int*)pointerToDeletedData;
     printf("--> %d\n", *deletedData);
     free(deletedData);
+    deletedData = NULL;
+
+    if ((err = LinkedList_deleteAt(&ll, &pointerToDeletedData, 0)))
+        return err;
+    deletedData = (int*)pointerToDeletedData;
+    printf("--> %d\n", *deletedData);
+    free(deletedData);
+    deletedData = NULL;
+
+
     LinkedList_print(ll);
 
 
