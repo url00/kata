@@ -5,14 +5,17 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../LinkedList.c \
+../Stack.c \
 ../main.c 
 
 OBJS += \
 ./LinkedList.o \
+./Stack.o \
 ./main.o 
 
 C_DEPS += \
 ./LinkedList.d \
+./Stack.d \
 ./main.d 
 
 

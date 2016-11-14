@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "LinkedList.h"
+#include "Stack.h"
 
 int main(void) {
     int err = 0;
@@ -47,7 +48,19 @@ int main(void) {
     free(deletedData);
     deletedData = NULL;
 
+    LinkedList_print(ll);
 
+
+    int* eleven = (int*)malloc(sizeof(int));
+    *eleven = 11;
+    if ((err = Stack_push(&ll, eleven))) {
+        return err;
+    }
+    LinkedList_print(ll);
+
+    if((err = Stack_pop(&ll, &pointerToDeletedData))) {
+        return err;
+    }
     LinkedList_print(ll);
 
 
