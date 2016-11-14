@@ -2,7 +2,25 @@
 #include <stdlib.h>
 #include "LinkedList.h"
 #include "Stack.h"
+#include "BetterLinkedList.h"
 
+int main(void) {
+    int err = 0;
+
+    BetterLinkedList* ll;
+    err = BetterLinkedList_init(&ll);
+    if (err) {
+        return err;
+    }
+
+    int* two = (int*)malloc(sizeof(int));
+    *two = 2;
+    ll->addToStart(ll, two);
+
+    ll->print(ll);
+}
+
+/*
 int main(void) {
     int err = 0;
 
@@ -67,3 +85,4 @@ int main(void) {
     LinkedList_free(&ll);
     return 0;
 }
+*/

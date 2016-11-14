@@ -22,19 +22,19 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: Stack.exe
+all: Linked\ List.exe
 
 # Tool invocations
-Stack.exe: $(OBJS) $(USER_OBJS)
+Linked\ List.exe: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Cygwin C Linker'
-	gcc  -o "Stack.exe" $(OBJS) $(USER_OBJS) $(LIBS)
+	gcc  -o "Linked List.exe" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(EXECUTABLES)$(OBJS)$(C_DEPS) Stack.exe
+	-$(RM) $(EXECUTABLES)$(OBJS)$(C_DEPS) "Linked List.exe"
 	-@echo ' '
 
 .PHONY: all clean dependents
