@@ -91,5 +91,43 @@
         return nodeToDelete.data;
     }
     
+    
+    LinkedList.prototype.fromLast = function (howManyFromLast) {
+        if (howManyFromLast >= this.length) {
+            throw "Index out of bounds.";
+        }
+        
+        var desiredIndex = this.length - 1 - howManyFromLast;
+        return this.findNode(desiredIndex).data;
+    }
+
+    LinkedList.prototype.fromLastNoLength = function (howManyFromLast) {
+        var countDownUntilValidLast = howManyFromLast;
+
+        var current = this.head;
+        if (current == undefined) {
+            throw "Empty list.";
+        }
+        
+        var desiredNode = current;
+
+        while (current.next != undefined) {
+            // While we haven't reached the tail...
+            if (countDownUntilValidLast == 0) {
+                // If the main list traveler has moved enough spaces, then
+                // as it continues to move, move our desired node with it.
+                desiredNode = desiredNode.next;
+            } else {
+                // Otherwise, continue the countdown until we need to start
+                // moving the other traveler.
+                countDownUntilValidLast--;
+            }
+            
+            current = current.next;
+        }
+        
+        return desiredNode.data;
+    }
+    
     window.LinkedList = LinkedList;
 }());

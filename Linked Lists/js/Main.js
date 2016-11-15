@@ -21,6 +21,12 @@ ll.insertAt(0, -400);
 addToOutput(llOutput, ll + "");
 ll.deleteAt(0);
 addToOutput(llOutput, ll + "");
+ll.insertAt(0, -400);
+addToOutput(llOutput, ll + "");
+var fromLastOutput = ll.fromLast(0);
+addToOutput(llOutput, fromLastOutput + " <--");
+fromLastOutput = ll.fromLastNoLength(2);
+addToOutput(llOutput, fromLastOutput + " <--");
 
 
 var stackTitle = document.createElement("h1");
