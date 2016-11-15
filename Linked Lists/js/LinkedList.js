@@ -134,10 +134,9 @@
         var newList = document.createElement("ul");
 
         while (current != undefined) {
-            var newElem = document.createElement("li");
-            newElem.classList.add("element");
-            newElem.innerText = current.data;
-            newList.appendChild(newElem);
+            var newLi = document.createElement("li");
+            newLi.appendChild(this.toElementSpan(current));
+            newList.appendChild(newLi);
 
             if (current.next !== undefined) {
                 var newArrow = document.createElement("li");

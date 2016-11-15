@@ -35,7 +35,7 @@ var oneFromLast = ll.fromLast(1);
 addToBody(ll.toElementSpan(oneFromLast));
 
 createElem("h2", "2 from last (no length):");
-var twoFromLast = ll.fromLastNoLength(1);
+var twoFromLast = ll.fromLastNoLength(2);
 addToBody(ll.toElementSpan(twoFromLast));
 
 
