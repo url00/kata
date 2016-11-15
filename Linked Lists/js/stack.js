@@ -14,6 +14,10 @@
     MyStack.prototype.toString = function () {
         return this.ll + "";
     }
+
+    MyStack.prototype.toUL = function () {
+        return this.ll.toUL();
+    }
     
     window.MyStack = MyStack;
 }());

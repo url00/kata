@@ -1,41 +1,47 @@
-function addToOutput(output, text) {
-    var newElem = document.createElement("li");
-    newElem.innerText = text;
-    output.appendChild(newElem);
+function createElem(elem, text) {
+    var newElem = document.createElement(elem);
+    newElem.innerHTML = text;
+    addToBody(newElem);
+}
+
+function addToBody(elem) {
+    document.getElementsByTagName("body")[0].appendChild(elem);
 }
 
 
-var llTitle = document.createElement("h1");
-llTitle.innerHTML = "Linked List:";
-document.getElementsByTagName("body")[0].appendChild(llTitle);
-
-var llOutput = document.createElement("ul");
-document.getElementsByTagName("body")[0].appendChild(llOutput);
-
+createElem("h1", "Linked List");
 var ll = new LinkedList();
+
+createElem("h2", "Inserts:");
 ll.insertAt(0, 2);
-addToOutput(llOutput, ll + "");
 ll.insertAt(1, -20);
-addToOutput(llOutput, ll + "");
 ll.insertAt(0, -400);
-addToOutput(llOutput, ll + "");
+addToBody(ll.toUL());
+ll.insertAt(2, 35);
+ll.insertAt(1, 78);
+ll.insertAt(0, "wow");
+addToBody(ll.toUL());
+
+createElem("h2", "Delete at 0:");
 ll.deleteAt(0);
-addToOutput(llOutput, ll + "");
-ll.insertAt(0, -400);
-addToOutput(llOutput, ll + "");
-var fromLastOutput = ll.fromLast(0);
-addToOutput(llOutput, fromLastOutput + " <--");
-fromLastOutput = ll.fromLastNoLength(2);
-addToOutput(llOutput, fromLastOutput + " <--");
+addToBody(ll.toUL());
+
+createElem("h2", "Delete at 2:");
+ll.deleteAt(2);
+addToBody(ll.toUL());
+
+createElem("h2", "1 from last (with length):");
+var oneFromLast = ll.fromLast(1);
+addToBody(ll.toElementSpan(oneFromLast));
+
+createElem("h2", "2 from last (no length):");
+var twoFromLast = ll.fromLastNoLength(1);
+addToBody(ll.toElementSpan(twoFromLast));
 
 
-var stackTitle = document.createElement("h1");
-stackTitle.innerHTML = "Stack:";
-document.getElementsByTagName("body")[0].appendChild(stackTitle);
-
-var stackOutput = document.createElement("ul");
-document.getElementsByTagName("body")[0].appendChild(stackOutput);
-
+createElem("h1", "Stack");
 var stack = new MyStack();
 stack.push("test");
-addToOutput(stackOutput, stack + "");
+stack.push("wow");
+stack.push("another");
+addToBody(stack.toUL());

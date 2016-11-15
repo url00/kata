@@ -29,7 +29,7 @@
         var currentNode = this.head;
         var currentIndex = 0;
 
-        if (this.head == undefined) {
+        if (this.head === undefined) {
             throw "Empty list.";
         }
 
@@ -37,7 +37,7 @@
             throw "Index out of bounds.";
         }
 
-        while (currentNode != undefined && currentIndex != index) {
+        while (currentNode !== undefined && currentIndex !== index) {
             currentNode = currentNode.next;
             currentIndex++;
         }
@@ -53,7 +53,7 @@
             throw "Index out of bounds.";
         }
 
-        if (indexToInsertAt == 0) {
+        if (indexToInsertAt === 0) {
             var newNext = this.head;
             this.head = newNode;
             newNode.next = newNext;
@@ -74,8 +74,8 @@
             throw "Index out of bounds.";
         }
 
-        if (indexToDeleteAt == 0) {
-            if (this.head == undefined) {
+        if (indexToDeleteAt === 0) {
+            if (this.head === undefined) {
                 throw "Empty list."
             }
 
@@ -98,14 +98,14 @@
         }
         
         var desiredIndex = this.length - 1 - howManyFromLast;
-        return this.findNode(desiredIndex).data;
+        return this.findNode(desiredIndex);
     }
 
     LinkedList.prototype.fromLastNoLength = function (howManyFromLast) {
         var countDownUntilValidLast = howManyFromLast;
 
         var current = this.head;
-        if (current == undefined) {
+        if (current === undefined) {
             throw "Empty list.";
         }
         
@@ -113,7 +113,7 @@
 
         while (current.next != undefined) {
             // While we haven't reached the tail...
-            if (countDownUntilValidLast == 0) {
+            if (countDownUntilValidLast === 0) {
                 // If the main list traveler has moved enough spaces, then
                 // as it continues to move, move our desired node with it.
                 desiredNode = desiredNode.next;
@@ -126,7 +126,37 @@
             current = current.next;
         }
         
-        return desiredNode.data;
+        return desiredNode;
+    }
+
+    LinkedList.prototype.toUL = function () {
+        var current = this.head;        
+        var newList = document.createElement("ul");
+
+        while (current != undefined) {
+            var newElem = document.createElement("li");
+            newElem.classList.add("element");
+            newElem.innerText = current.data;
+            newList.appendChild(newElem);
+
+            if (current.next !== undefined) {
+                var newArrow = document.createElement("li");
+                newArrow.classList.add("arrow");
+                newArrow.innerHTML = "&#x2192;";
+                newList.appendChild(newArrow);
+            }
+
+            current = current.next;
+        }
+
+        return newList;
+    }
+
+    LinkedList.prototype.toElementSpan = function (node) {
+        var newElem = document.createElement("span");
+        newElem.classList.add("element");
+        newElem.innerText = node.data;
+        return newElem;
     }
     
     window.LinkedList = LinkedList;
