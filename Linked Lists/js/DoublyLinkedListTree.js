@@ -17,6 +17,38 @@
         if (this.next != null) {
             this.next.log(nodeNum + 1, depth);
         }
+    };    
+
+    Node.prototype.yyy = function () {
+        var newElem = document.createElement("span");
+        newElem.classList.add("element");
+        newElem.innerText = this.data;
+
+        if (this.child !== undefined) {
+            newElem.appendChild(this.child.xxx());
+        }
+
+        return newElem;
+    }
+
+    Node.prototype.xxx = function () {
+        var ul = document.createElement("ul");
+
+        var current = this;
+        while (current !== undefined) {
+            ul.appendChild(current.yyy());
+
+            if (current.next !== undefined) {
+                var newArrow = document.createElement("li");
+                newArrow.classList.add("arrow");
+                newArrow.innerHTML = "&#x2192;";
+                ul.appendChild(newArrow);
+            }
+
+            current = current.next;
+        }
+
+        return ul;
     };
 
     function DoublyLinkedListTree() {
@@ -64,6 +96,10 @@
 
     DoublyLinkedListTree.prototype.log = function () {
         this.head.log();
+    };
+
+    DoublyLinkedListTree.prototype.toUL = function () {
+        return this.head.xxx();
     };
 
     window.DoublyLinkedListTree = DoublyLinkedListTree;

@@ -32,11 +32,11 @@ addToBody(ll.toUL());
 
 createElem("h2", "1 from last (with length):");
 var oneFromLast = ll.fromLast(1);
-addToBody(ll.toElementSpan(oneFromLast));
+addToBody(oneFromLast.toElementSpan());
 
 createElem("h2", "2 from last (no length):");
 var twoFromLast = ll.fromLastNoLength(2);
-addToBody(ll.toElementSpan(twoFromLast));
+addToBody(twoFromLast.toElementSpan());
 
 
 createElem("h1", "Stack");
@@ -48,6 +48,6 @@ addToBody(stack.toUL());
 
 
 createElem("h1", "Doubly Linked List Tree");
-createElem("h2", "See console.");
 var dtree = DoublyLinkedListTree.prototype.generateTreeWithData();
 dtree.log();
+addToBody(dtree.toUL());

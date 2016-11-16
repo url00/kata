@@ -3,34 +3,37 @@ body {
 }
 
 h2 {
-    font-size: 12pt;
-    font-weight: normal;
     margin: 0;
     margin-bottom: 10pt;
+    font-size: 12pt;
+    font-weight: normal;
 }
 
 ul {
     margin: 0;
-    margin-bottom: 10pt;
     padding: 0;
 }
 
 li {
-    display: inline;
     margin: 5px;
     margin-left: 0;
+    display: inline;
+}
+
+span {
+    margin: 0;
 }
 
 .element {
     display: inline-block;
-    margin-right: 4px;
     padding: 2px;
     border: 1px;
     border-style: solid;
     border-radius: 5px;
-    margin-bottom: 10pt;
+    text-align: center;
 }
 
 .arrow {
     font-weight: bold;
+    margin-left: 4px;
 }

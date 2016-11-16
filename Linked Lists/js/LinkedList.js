@@ -10,6 +10,13 @@
         return this.data;
     };
 
+    Node.prototype.toElementSpan = function () {
+        var newElem = document.createElement("span");
+        newElem.classList.add("element");
+        newElem.innerText = this.data;
+        return newElem;
+    };
+
     function LinkedList() {
         this.head = undefined;
         this.length = 0;
@@ -137,7 +144,7 @@
 
         while (current != undefined) {
             var newLi = document.createElement("li");
-            newLi.appendChild(this.toElementSpan(current));
+            newLi.appendChild(current.toElementSpan());
             newList.appendChild(newLi);
 
             if (current.next !== undefined) {
@@ -151,13 +158,6 @@
         }
 
         return newList;
-    };
-
-    LinkedList.prototype.toElementSpan = function (node) {
-        var newElem = document.createElement("span");
-        newElem.classList.add("element");
-        newElem.innerText = node.data;
-        return newElem;
     };
     
     window.LinkedList = LinkedList;
