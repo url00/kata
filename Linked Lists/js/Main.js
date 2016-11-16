@@ -45,3 +45,9 @@ stack.push("test");
 stack.push("wow");
 stack.push("another");
 addToBody(stack.toUL());
+
+
+createElem("h1", "Doubly Linked List Tree");
+createElem("h2", "See console.");
+var dtree = DoublyLinkedListTree.prototype.generateTreeWithData();
+dtree.log();

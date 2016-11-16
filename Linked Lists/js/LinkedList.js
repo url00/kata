@@ -1,12 +1,14 @@
 // Immidiately invoked function expression.
 (function () {
+
     function Node() {
         this.data = undefined;
         this.next = undefined;
     }
+
     Node.prototype.toString = function () {
         return this.data;
-    }
+    };
 
     function LinkedList() {
         this.head = undefined;
@@ -23,7 +25,7 @@
         }
 
         return output;
-    }
+    };
     
     LinkedList.prototype.findNode = function (index) {
         var currentNode = this.head;
@@ -43,7 +45,7 @@
         }
 
         return currentNode;
-    }
+    };
     
     LinkedList.prototype.insertAt = function (indexToInsertAt, data) {
         var newNode = new Node();
@@ -65,7 +67,7 @@
         }
 
         this.length++;
-    }
+    };
     
     LinkedList.prototype.deleteAt = function (indexToDeleteAt) {
         var nodeToDelete;
@@ -89,7 +91,7 @@
 
         this.length--;
         return nodeToDelete.data;
-    }
+    };
     
     
     LinkedList.prototype.fromLast = function (howManyFromLast) {
@@ -99,7 +101,7 @@
         
         var desiredIndex = this.length - 1 - howManyFromLast;
         return this.findNode(desiredIndex);
-    }
+    };
 
     LinkedList.prototype.fromLastNoLength = function (howManyFromLast) {
         var countDownUntilValidLast = howManyFromLast;
@@ -127,7 +129,7 @@
         }
         
         return desiredNode;
-    }
+    };
 
     LinkedList.prototype.toUL = function () {
         var current = this.head;        
@@ -149,14 +151,15 @@
         }
 
         return newList;
-    }
+    };
 
     LinkedList.prototype.toElementSpan = function (node) {
         var newElem = document.createElement("span");
         newElem.classList.add("element");
         newElem.innerText = node.data;
         return newElem;
-    }
+    };
     
     window.LinkedList = LinkedList;
+    
 }());
