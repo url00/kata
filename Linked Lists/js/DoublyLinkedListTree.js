@@ -19,24 +19,24 @@
         }
     };    
 
-    Node.prototype.yyy = function () {
+    Node.prototype.elementToSpan = function () {
         var newElem = document.createElement("span");
         newElem.classList.add("element");
         newElem.innerText = this.data;
 
         if (this.child !== undefined) {
-            newElem.appendChild(this.child.xxx());
+            newElem.appendChild(this.child.subTreeToUL());
         }
 
         return newElem;
     }
 
-    Node.prototype.xxx = function () {
+    Node.prototype.subTreeToUL = function () {
         var ul = document.createElement("ul");
 
         var current = this;
         while (current !== undefined) {
-            ul.appendChild(current.yyy());
+            ul.appendChild(current.elementToSpan());
 
             if (current.next !== undefined) {
                 var newArrow = document.createElement("li");
@@ -99,7 +99,7 @@
     };
 
     DoublyLinkedListTree.prototype.toUL = function () {
-        return this.head.xxx();
+        return this.head.subTreeToUL();
     };
 
     window.DoublyLinkedListTree = DoublyLinkedListTree;
