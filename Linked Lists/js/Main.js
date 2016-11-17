@@ -49,5 +49,5 @@ addToBody(stack.toUL());
 
 createElem("h1", "Doubly Linked List Tree");
 var dtree = DoublyLinkedListTree.prototype.generateTreeWithData();
-dtree.log();
+//dtree.log();
 addToBody(dtree.toUL());

@@ -7,6 +7,15 @@
         this.child = undefined;
     }
 
+    function nodeWith(data, child = undefined, next = undefined, preivous = undefined) {
+        var node = new Node();
+        node.data = data;
+        node.next = next;
+        node.previous = preivous;
+        node.child = child;
+        return node;
+    }
+
     Node.prototype.log = function (nodeNum = 0, depth = 0) {
         console.log(nodeNum + "." + depth + ": " + this.data);
 
@@ -53,9 +62,53 @@
 
     function DoublyLinkedListTree() {
         this.head = undefined;
+        this.tail = undefined;
+    }
+    
+    function linkNodes(nodes) {
+        var i = 0;
+
+        while (i + 1 < nodes.length) {
+            nodes[i].next = nodes[i + 1]
+            nodes[i + 1].preivous = nodes[i];
+            i++;
+        }
+
+        return nodes[0];
     }
 
     DoublyLinkedListTree.prototype.generateTreeWithData = function () {
+        var output = new DoublyLinkedListTree();
+
+        output.pushNode(nodeWith(1));
+
+        output.pushNode(
+            nodeWith(2, linkNodes([
+                nodeWith(2, linkNodes([
+                    nodeWith(12, linkNodes([
+                        nodeWith(21), nodeWith(3)
+                    ])),
+                    nodeWith(5)
+                ])),
+                nodeWith(7)
+            ]))
+        );
+            
+        output.pushNode(nodeWith(17));
+        output.pushNode(nodeWith(33));
+        
+        output.pushNode(
+            nodeWith(5, linkNodes([
+                nodeWith(6),
+                nodeWith(25, nodeWith(8)),
+                nodeWith(6, nodeWith(9, nodeWith(7)))
+            ]))
+        );
+
+        return output;
+    }
+
+    DoublyLinkedListTree.prototype.generateTreeWithMyData = function () {
         var mainTree = new DoublyLinkedListTree();
         mainTree.head = new Node();
         mainTree.head.data = 0;
@@ -78,6 +131,18 @@
 
         return mainTree;
     };
+
+    DoublyLinkedListTree.prototype.pushNode = function (node) {
+        if (this.head === undefined) {
+            this.head = node;
+            this.tail = node;
+            return;
+        }
+
+        node.next = this.head;
+        this.head.previous = node;
+        this.head = node;
+    }
 
 
     DoublyLinkedListTree.prototype.flatten = function () {
